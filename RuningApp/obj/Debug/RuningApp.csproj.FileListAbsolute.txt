@@ -1,0 +1,15 @@
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\Bin\Debug\ApplicationIcon.png
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\Bin\Debug\Background.png
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\Bin\Debug\RuningApp.dll
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\Bin\Debug\RuningApp.pdb
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\Bin\Debug\AppManifest.xaml
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\Bin\Debug\RuningApp.xap
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\Bin\Debug\Microsoft.Phone.Controls.dll
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\Bin\Debug\Microsoft.Phone.Controls.xml
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\obj\Debug\ResolveAssemblyReference.cache
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\obj\Debug\App.g.i.cs
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\obj\Debug\MainPage.g.i.cs
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\obj\Debug\RuningApp.g.resources
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\obj\Debug\RuningApp.dll
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\obj\Debug\RuningApp.pdb
+c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\obj\Debug\XapCacheFile.xml
