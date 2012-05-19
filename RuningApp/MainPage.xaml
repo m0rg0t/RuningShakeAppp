@@ -23,7 +23,8 @@
             <controls:PivotItem Header="Log record">
                 <!--Двухстрочный список с разбивкой текста на строки-->
                 <StackPanel>
-                    
+                    <Button Name="RecordGestures" Content="StartRecording" Click="RecordGestures_Click" />
+                    <ListBox Name="ShakeLog" />
                 </StackPanel>
             </controls:PivotItem>
  

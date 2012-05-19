@@ -2,5 +2,6 @@
   <Deployment.Parts>
     <AssemblyPart x:Name="RuningApp" Source="RuningApp.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Controls" Source="Microsoft.Phone.Controls.dll" />
+    <AssemblyPart x:Name="ShakeGestures" Source="ShakeGestures.dll" />
   </Deployment.Parts>
 </Deployment>

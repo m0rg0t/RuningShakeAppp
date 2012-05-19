@@ -13,3 +13,19 @@ c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\obj\Debu
 c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\obj\Debug\RuningApp.dll
 c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\obj\Debug\RuningApp.pdb
 c:\users\root\documents\visual studio 2010\Projects\RuningApp\RuningApp\obj\Debug\XapCacheFile.xml
+C:\projects\RuningApp\RuningApp\Bin\Debug\ApplicationIcon.png
+C:\projects\RuningApp\RuningApp\Bin\Debug\Background.png
+C:\projects\RuningApp\RuningApp\Bin\Debug\RuningApp.dll
+C:\projects\RuningApp\RuningApp\Bin\Debug\RuningApp.pdb
+C:\projects\RuningApp\RuningApp\Bin\Debug\AppManifest.xaml
+C:\projects\RuningApp\RuningApp\Bin\Debug\RuningApp.xap
+C:\projects\RuningApp\RuningApp\Bin\Debug\Microsoft.Phone.Controls.dll
+C:\projects\RuningApp\RuningApp\Bin\Debug\ShakeGestures.dll
+C:\projects\RuningApp\RuningApp\Bin\Debug\Microsoft.Phone.Controls.xml
+C:\projects\RuningApp\RuningApp\obj\Debug\ResolveAssemblyReference.cache
+C:\projects\RuningApp\RuningApp\obj\Debug\App.g.i.cs
+C:\projects\RuningApp\RuningApp\obj\Debug\MainPage.g.i.cs
+C:\projects\RuningApp\RuningApp\obj\Debug\RuningApp.g.resources
+C:\projects\RuningApp\RuningApp\obj\Debug\RuningApp.dll
+C:\projects\RuningApp\RuningApp\obj\Debug\RuningApp.pdb
+C:\projects\RuningApp\RuningApp\obj\Debug\XapCacheFile.xml
