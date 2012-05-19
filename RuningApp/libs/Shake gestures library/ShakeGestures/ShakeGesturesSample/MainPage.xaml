@@ -1,0 +1,67 @@
+﻿<phone:PhoneApplicationPage 
+    x:Class="ShakeGesturesSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:phone="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone"
+    xmlns:shell="clr-namespace:Microsoft.Phone.Shell;assembly=Microsoft.Phone"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:ShakeGesturesSample"
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768"
+    FontFamily="{StaticResource PhoneFontFamilyNormal}"
+    FontSize="{StaticResource PhoneFontSizeNormal}"
+    Foreground="{StaticResource PhoneForegroundBrush}"
+    SupportedOrientations="Portrait" Orientation="Portrait"
+    shell:SystemTray.IsVisible="True"
+    x:Name="mainPage"
+    >
+    <phone:PhoneApplicationPage.Resources>
+        <local:ShakeTypeToVisibilityConverter x:Key="shakeTypeToVisibilityConverter" />
+    </phone:PhoneApplicationPage.Resources>
+
+    <Grid x:Name="LayoutRoot" Background="Transparent">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
+            <TextBlock x:Name="ApplicationTitle" Text="shake gestures helper" Style="{StaticResource PhoneTextNormalStyle}"/>
+            <TextBlock x:Name="PageTitle" Text="demo" Margin="9,-7,0,0" Style="{StaticResource PhoneTextTitle1Style}"/>
+        </StackPanel>
+
+        <Grid x:Name="ContentPanel" Grid.Row="1" Margin="12,0,12,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ContentControl HorizontalAlignment="Left" Grid.Row="0" FontSize="26">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Shake type: " />
+                        <TextBlock Text="{Binding ElementName=mainPage, Path=CurrentShakeType}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Last update time: " />
+                        <TextBlock Name="_lastUpdateTime" />
+                    </StackPanel>
+                </StackPanel>
+            </ContentControl>
+            <Grid Grid.Row="1">
+                <Image 
+                    Source="/ShakeGesturesSample;component/Images/ScaleX.png" 
+                    Visibility="{Binding ElementName=mainPage, Path=CurrentShakeType, Converter={StaticResource shakeTypeToVisibilityConverter}, ConverterParameter='X', Mode=OneWay}" 
+                    />
+                <Image 
+                    Source="/ShakeGesturesSample;component/Images/ScaleY.png" 
+                    Visibility="{Binding ElementName=mainPage, Path=CurrentShakeType, Converter={StaticResource shakeTypeToVisibilityConverter}, ConverterParameter='Y', Mode=OneWay}" 
+                    />
+                <Image 
+                    Source="/ShakeGesturesSample;component/Images/ScaleZ.png" 
+                    Visibility="{Binding ElementName=mainPage, Path=CurrentShakeType, Converter={StaticResource shakeTypeToVisibilityConverter}, ConverterParameter='Z', Mode=OneWay}" 
+                    />
+            </Grid>
+        </Grid>
+    </Grid>
+ 
+</phone:PhoneApplicationPage>

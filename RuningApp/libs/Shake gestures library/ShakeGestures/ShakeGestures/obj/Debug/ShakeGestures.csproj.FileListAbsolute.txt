@@ -1,0 +1,5 @@
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGestures\Bin\Debug\ShakeGestures.dll
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGestures\Bin\Debug\ShakeGestures.pdb
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGestures\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGestures\obj\Debug\ShakeGestures.dll
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGestures\obj\Debug\ShakeGestures.pdb

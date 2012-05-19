@@ -29,3 +29,4 @@ C:\projects\RuningApp\RuningApp\obj\Debug\RuningApp.g.resources
 C:\projects\RuningApp\RuningApp\obj\Debug\RuningApp.dll
 C:\projects\RuningApp\RuningApp\obj\Debug\RuningApp.pdb
 C:\projects\RuningApp\RuningApp\obj\Debug\XapCacheFile.xml
+C:\projects\RuningApp\RuningApp\Bin\Debug\AmCharts.Windows.QuickCharts.WP.dll

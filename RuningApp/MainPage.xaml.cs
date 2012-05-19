@@ -12,8 +12,8 @@ using System.Windows.Shapes;
 using Microsoft.Phone.Controls;
 
 using ShakeGestures;
-//using Microsoft.Phone.Controls;
-//using ShakeGestures;
+using AmCharts;
+using System.Collections.ObjectModel;
 
 namespace RuningApp
 {
@@ -36,6 +36,7 @@ namespace RuningApp
             {
                 App.ViewModel.LoadData();
             }
+            this.DataContext = this;
         }
 
         public ShakeType CurrentShakeType
@@ -64,12 +65,107 @@ namespace RuningApp
             Dispatcher.BeginInvoke(
                 () =>
                 {
-                    //Text = DateTime.Now.ToString();
-                    CurrentShakeType = e.ShakeType;
-                    //MessageBox.Show(e.ShakeType.ToString());
-                    this.ShakeLog.Items.Add(DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond + "  " + e.ShakeType);
+                    double x_type = 0, y_type = 0, z_type = 0;
+
+                    if (e.shakeType.MaxValues.minx == 10000)
+                    {
+                        e.shakeType.MaxValues.minx = 0;
+                    };
+                    if (e.shakeType.MaxValues.miny == 10000)
+                    {
+                        e.shakeType.MaxValues.miny = 0;
+                    };
+                    if (e.shakeType.MaxValues.minz == 10000)
+                    {
+                        e.shakeType.MaxValues.minz = 0;
+                    };
+
+
+                    if (e.shakeType.MaxValues.maxx == -10000)
+                    {
+                        e.shakeType.MaxValues.maxx = 0;
+                    };
+                    if (e.shakeType.MaxValues.maxy == -10000)
+                    {
+                        e.shakeType.MaxValues.maxy = 0;
+                    };
+                    if (e.shakeType.MaxValues.maxz == -10000)
+                    {
+                        e.shakeType.MaxValues.maxz = 0;
+                    };
+
+
+                    switch (e.shakeType.ShakeTypeStr.ToString())
+                    {
+                        case "X":
+                            if ((Math.Abs(e.shakeType.MaxValues.maxx))>(Math.Abs(e.shakeType.MaxValues.minx))) {
+                                x_type = (Math.Abs(e.shakeType.MaxValues.maxx));
+                            }
+                            else {
+                                x_type = (Math.Abs(e.shakeType.MaxValues.minx));
+                            };
+                            break;
+                        case "Y":
+                            if ((Math.Abs(e.shakeType.MaxValues.maxy))>(Math.Abs(e.shakeType.MaxValues.miny))) {
+                                y_type = (Math.Abs(e.shakeType.MaxValues.maxy));
+                            }
+                            else {
+                                y_type = (Math.Abs(e.shakeType.MaxValues.miny));
+                            };
+                            break;
+                        case "Z":
+                            if ((Math.Abs(e.shakeType.MaxValues.maxz))>(Math.Abs(e.shakeType.MaxValues.minz))) {
+                                z_type = (Math.Abs(e.shakeType.MaxValues.maxz));
+                            }
+                            else {
+                                z_type = (Math.Abs(e.shakeType.MaxValues.minz));
+                            };
+                            break;
+                        default:                            
+                            break;
+                    }
+                    if ((x_type == 10000) && (x_type==-10000)) {
+                        x_type = 0;
+                    };
+                    if ((z_type == 10000) && (z_type == -10000))
+                    {
+                        z_type = 0;
+                    };
+                    if ((y_type == 10000) && (y_type == -10000))
+                    {
+                        y_type = 0;
+                    };
+
+                    _distance = _distance + Double.Parse(this.StepLength.Text);
+                    this.DistanceText.Text = _distance.ToString("F");
+
+                    _data.Add(new CoordDataItem() { time = DateTime.Now.Minute + ":" + DateTime.Now.Second, X = x_type, Y = y_type, Z = z_type });
+                    this.ShakeLog.Items.Add(DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + "  " + e.shakeType.ShakeTypeStr.ToString() + "  " + x_type.ToString() + "  " + y_type.ToString() + "  " + z_type.ToString());
                 });
             //System.Diagnostics.Debug.WriteLine(DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond + "  " + e.ShakeType);
+        }
+
+        public ObservableCollection<CoordDataItem> Data { get { return _data; } }
+
+        public string Distance { get { return _distance.ToString("F"); } }
+
+        private double _distance = 0;
+
+        private ObservableCollection<CoordDataItem> _data = new ObservableCollection<CoordDataItem>()
+        { 
+        };
+
+        public class CoordDataItem
+        {
+            public string time { get; set; }
+            public double X { get; set; }
+            public double Y { get; set; }
+            public double Z { get; set; }
+        }
+
+        private void StopGestures_Click(object sender, RoutedEventArgs e)
+        {
+            ShakeGesturesHelper.Instance.Active = false;
         }
 
     }

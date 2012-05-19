@@ -1,0 +1,15 @@
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\Bin\Debug\ApplicationIcon.png
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\Bin\Debug\Background.png
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\Bin\Debug\ShakeGesturesSample.dll
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\Bin\Debug\ShakeGesturesSample.pdb
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\Bin\Debug\AppManifest.xaml
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\Bin\Debug\ShakeGesturesSample.xap
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\Bin\Debug\ShakeGestures.dll
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\Bin\Debug\ShakeGestures.pdb
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\obj\Debug\App.g.i.cs
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\obj\Debug\MainPage.g.i.cs
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\obj\Debug\ShakeGesturesSample.g.resources
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\obj\Debug\ShakeGesturesSample.dll
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\obj\Debug\ShakeGesturesSample.pdb
+C:\Users\root\Desktop\wp7-components\Shake gestures library\ShakeGestures\ShakeGesturesSample\obj\Debug\XapCacheFile.xml
