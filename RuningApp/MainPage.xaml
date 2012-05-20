@@ -7,15 +7,49 @@
     xmlns:controls="clr-namespace:Microsoft.Phone.Controls;assembly=Microsoft.Phone.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="768" 
+    mc:Ignorable="d" d:DesignWidth="480" d:DesignHeight="696" 
     d:DataContext="{d:DesignData SampleData/MainViewModelSampleData.xaml}"
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     xmlns:amq="clr-namespace:AmCharts.Windows.QuickCharts;assembly=AmCharts.Windows.QuickCharts.WP"
-    xmlns:ar="clr-namespace:GART;assembly=GART"
+    xmlns:ARControls="clr-namespace:GART.Controls;assembly=GART"
+    xmlns:maps="clr-namespace:Microsoft.Phone.Controls.Maps;assembly=Microsoft.Phone.Controls.Maps"
+
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait"  Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
+
+    <phone:PhoneApplicationPage.Resources>
+        <!-- Used for authentication against Bing maps -->
+        <maps:ApplicationIdCredentialsProvider x:Key="BingCredentials" ApplicationId="AsoYwOquow1D9inkw-YSN1iYJ7xPqmsKHvKPUZP_7B_swwwPTbdEDyoF_gibHtpT" />
+
+        <DataTemplate x:Key="PointTemplate">
+            <StackPanel>
+                <Border BorderBrush="Black" BorderThickness="4" CornerRadius="8" Background="#FF003847" Width="320">
+<StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            FontSize="32" VerticalAlignment="Center" Margin="0,0,4,0" Text="Шаг"
+                            d:LayoutOverrides="Width" TextTrimming="WordEllipsis"/>
+                        <TextBlock x:Name="NameBlock" TextWrapping="NoWrap" Text="{Binding step}" 
+                               FontSize="32" VerticalAlignment="Center" Margin="0,0,4,0" 
+                               d:LayoutOverrides="Width" TextTrimming="WordEllipsis"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock TextWrapping="NoWrap" Text="Время:" 
+                               FontSize="20" VerticalAlignment="Center" Margin="0,0,4,0" 
+                               d:LayoutOverrides="Width" TextTrimming="WordEllipsis"/>
+                        <TextBlock x:Name="TypeBlock" 
+                               TextWrapping="NoWrap" Text="{Binding timestr}" 
+                               FontSize="20" VerticalAlignment="Center" Margin="0,0,4,0" 
+                               d:LayoutOverrides="Width" TextTrimming="WordEllipsis"/>
+                    </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+            
+        </DataTemplate>
+    </phone:PhoneApplicationPage.Resources>
 
     <!--LayoutRoot представляет корневую сетку, где размещается все содержимое страницы-->
     <Grid x:Name="LayoutRoot" Background="Transparent">
@@ -25,7 +59,7 @@
             <controls:PivotItem Header="Log record">
                 <!--Двухстрочный список с разбивкой текста на строки-->
                 <StackPanel>
-                    <MediaElement Name="MovingSoundsX" Source="/RuningApp;component/sounds/knock1.wav" Volume="1" />
+                    <MediaElement Name="MovingSoundsX" Source="/RuningApp;component/sounds/knock1.wav" Volume="5" />
                     <MediaElement Name="MovingSoundsY" Source="/RuningApp;component/sounds/revknock2.wav" Volume="1" />
                     
                     <Button x:Name="RecordGestures" Click="RecordGestures_Click" Content="Start record"/>
@@ -40,6 +74,10 @@
                         <TextBlock Text="0" Name="DistanceText" FontSize="60" />
                     </StackPanel>
 
+                    <!--<ARControls:ARDisplay x:Name="ARDisplayHeading" d:LayoutOverrides="Width">
+                        <ARControls:HeadingIndicator Height="170" Width="170" x:Name="HeadingIndicatorMain" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </ARControls:ARDisplay>-->
+
                 </StackPanel>
             </controls:PivotItem>
  
@@ -51,8 +89,8 @@
                          GridStroke="DarkGray" Height="600">
                         <amq:SerialChart.Graphs>
                             <amq:AreaGraph ValueMemberPath="X" Title="X" Brush="Blue" />
-                            <amq:AreaGraph ValueMemberPath="Y" Title="Y" Brush="#8000FF00" />
-                            <amq:AreaGraph ValueMemberPath="Z" Title="Z" Brush="#80FF0000" />
+                            <amq:AreaGraph ValueMemberPath="Y" Title="Y" Brush="Green" />
+                            <amq:AreaGraph ValueMemberPath="Z" Title="Z" Brush="Red" />
                         </amq:SerialChart.Graphs>
                     </amq:SerialChart>
                 </StackPanel>
@@ -81,22 +119,31 @@
 
             <controls:PivotItem Header="AR data sample">
                 <StackPanel>
-                    
+                    <Grid Height="500">
+                        <ARControls:ARDisplay Height="500" x:Name="ARDisplay" d:LayoutOverrides="Width">
+                        <ARControls:VideoPreview x:Name="VideoPreview" />
+                        <ARControls:OverheadMap Height="500" x:Name="OverheadMap" CredentialsProvider="{StaticResource BingCredentials}" />
+                        <ARControls:WorldView x:Name="WorldView" ItemTemplate="{StaticResource PointTemplate}" />
+                        <ARControls:HeadingIndicator x:Name="HeadingIndicator" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    </ARControls:ARDisplay>
+                    </Grid>
                 </StackPanel>
             </controls:PivotItem>
             </controls:Pivot>
     </Grid>
- 
-    <!--Пример кода, иллюстрирующий использование ApplicationBar-->
-    <!--<phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True">
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button1.png" Text="Кнопка 1"/>
-            <shell:ApplicationBarIconButton IconUri="/Images/appbar_button2.png" Text="Кнопка 2"/>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <shell:ApplicationBar>
+            <shell:ApplicationBarIconButton x:Name="RotateButton" IconUri="/icons/appbar.rotate.png" IsEnabled="True" Text="rotate" Click="RotateButton_Click"/>
+            <shell:ApplicationBarIconButton x:Name="HeadingButton" IconUri="/icons/appbar.heading.png" IsEnabled="True" Text="Heading" Click="HeadingButton_Click"/>
+            <shell:ApplicationBarIconButton x:Name="MapButton" IconUri="/icons/appbar.map.png" IsEnabled="True" Text="map" Click="MapButton_Click"/>
+            <shell:ApplicationBarIconButton x:Name="ThreeDButton" IconUri="/icons/appbar.3D.png" IsEnabled="True" Text="3D" Click="ThreeDButton_Click"/>
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="Элемент меню 1"/>
-                <shell:ApplicationBarMenuItem Text="Элемент меню 2"/>
+                <shell:ApplicationBarMenuItem x:Name="AddCurrentLocationsMenu" Text="add current locations" Click="AddCurrentLocationsMenu_Click" />
+                <shell:ApplicationBarMenuItem x:Name="AddLocationsMenu" Text="add random locations" Click="AddLocationsMenu_Click" />
+                <shell:ApplicationBarMenuItem x:Name="ClearLocationsMenu" Text="clear locations" Click="ClearLocationsMenu_Click" />
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
-    </phone:PhoneApplicationPage.ApplicationBar>-->
+    </phone:PhoneApplicationPage.ApplicationBar>
 
 </phone:PhoneApplicationPage>

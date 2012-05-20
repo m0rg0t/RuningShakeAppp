@@ -23,8 +23,6 @@ C:\projects\RuningApp\RuningApp\Bin\Debug\Microsoft.Phone.Controls.dll
 C:\projects\RuningApp\RuningApp\Bin\Debug\ShakeGestures.dll
 C:\projects\RuningApp\RuningApp\Bin\Debug\Microsoft.Phone.Controls.xml
 C:\projects\RuningApp\RuningApp\obj\Debug\ResolveAssemblyReference.cache
-C:\projects\RuningApp\RuningApp\obj\Debug\App.g.i.cs
-C:\projects\RuningApp\RuningApp\obj\Debug\MainPage.g.i.cs
 C:\projects\RuningApp\RuningApp\obj\Debug\RuningApp.g.resources
 C:\projects\RuningApp\RuningApp\obj\Debug\RuningApp.dll
 C:\projects\RuningApp\RuningApp\obj\Debug\RuningApp.pdb
@@ -33,3 +31,8 @@ C:\projects\RuningApp\RuningApp\Bin\Debug\AmCharts.Windows.QuickCharts.WP.dll
 C:\projects\RuningApp\RuningApp\Bin\Debug\GART.dll
 C:\projects\RuningApp\RuningApp\Bin\Debug\Microsoft.Phone.Controls.Maps.dll
 C:\projects\RuningApp\RuningApp\Bin\Debug\Microsoft.Phone.Controls.Maps.xml
+C:\projects\RuningApp\RuningApp\Bin\Debug\icons\appbar.3D.png
+C:\projects\RuningApp\RuningApp\Bin\Debug\icons\appbar.heading.png
+C:\projects\RuningApp\RuningApp\Bin\Debug\icons\appbar.rotate.png
+C:\projects\RuningApp\RuningApp\obj\Debug\App.g.i.cs
+C:\projects\RuningApp\RuningApp\obj\Debug\MainPage.g.i.cs

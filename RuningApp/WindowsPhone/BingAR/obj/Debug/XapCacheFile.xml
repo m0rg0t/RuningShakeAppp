@@ -1,0 +1,19 @@
+﻿<xapCache source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\Bin\Debug\BingAR.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="20.05.2012 14:01:28">
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="20.05.2012 14:01:28" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\Background.png" archivePath="Background.png" lastWriteTime="31.08.2011 2:47:24" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="31.08.2011 2:47:24" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\obj\Debug\BingAR.dll" archivePath="BingAR.dll" lastWriteTime="20.05.2012 14:01:25" />
+  <file source="C:\projects\RuningApp\RuningApp\libs\GART.dll" archivePath="GART.dll" lastWriteTime="20.05.2012 11:48:06" />
+  <file source="C:\Program Files\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.Maps.dll" archivePath="Microsoft.Phone.Controls.Maps.dll" lastWriteTime="29.08.2011 22:49:08" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\ServiceReferences.ClientConfig" archivePath="ServiceReferences.ClientConfig" lastWriteTime="31.08.2011 3:49:42" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\icons\appbar.3D.png" archivePath="icons\appbar.3D.png" lastWriteTime="31.08.2011 3:00:18" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\icons\appbar.heading.png" archivePath="icons\appbar.heading.png" lastWriteTime="31.08.2011 3:00:18" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\icons\appbar.map.png" archivePath="icons\appbar.map.png" lastWriteTime="31.08.2011 3:00:18" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\icons\appbar.rotate.png" archivePath="icons\appbar.rotate.png" lastWriteTime="31.08.2011 3:00:18" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\icons\appbar.video.png" archivePath="icons\appbar.video.png" lastWriteTime="31.08.2011 3:00:18" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="31.08.2011 2:47:24" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="20.05.2012 14:01:28" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\Bin\Debug\icons\appbar.3D.png" archivePath="icons\appbar.3D.png" lastWriteTime="31.08.2011 3:00:18" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\Bin\Debug\icons\appbar.rotate.png" archivePath="icons\appbar.rotate.png" lastWriteTime="31.08.2011 3:00:18" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\BingAR\Bin\Debug\Data\BingDataHelper.cs" archivePath="Data\BingDataHelper.cs" lastWriteTime="20.05.2012 14:01:19" />
+</xapCache>

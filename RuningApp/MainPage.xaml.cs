@@ -15,6 +15,12 @@ using ShakeGestures;
 using AmCharts;
 using System.Collections.ObjectModel;
 using GART;
+using GART.Data;
+
+using Matrix = Microsoft.Xna.Framework.Matrix;
+using Point = System.Windows.Point;
+using GART.Controls;
+using System.Device.Location;
 
 namespace RuningApp
 {
@@ -54,15 +60,19 @@ namespace RuningApp
             ShakeGesturesHelper.Instance.ShakeGesture += new EventHandler<ShakeGestureEventArgs>(Instance_ShakeGesture);
 
             // optional, set parameters
-            ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 2;
-            ShakeGesturesHelper.Instance.WeakMagnitudeWithoutGravitationThreshold = 0.1;
+            ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 1;
+            ShakeGesturesHelper.Instance.WeakMagnitudeWithoutGravitationThreshold = 0.08;
 
             // start shake detection
             ShakeGesturesHelper.Instance.Active = true;
         }
 
+        public int StepsCount { get { return _stepsCount; } set { _stepsCount = value; } }
+        private int _stepsCount = 0;
+
         private void Instance_ShakeGesture(object sender, ShakeGestureEventArgs e)
         {
+            _stepsCount++;
             Dispatcher.BeginInvoke(
                 () =>
                 {
@@ -107,7 +117,6 @@ namespace RuningApp
                             //this.MovingSoundsX.Source = new Uri("/RuningApp;component/sounds/knock1.wav");
                             //this.MovingSoundsX.Volume = x_type;
                             this.MovingSoundsX.Play();
-                            //"/RuningApp;component/sounds/knock1.wav"
                             break;
                         case "Y":
                             if ((Math.Abs(e.shakeType.MaxValues.maxy))>(Math.Abs(e.shakeType.MaxValues.miny))) {
@@ -116,7 +125,6 @@ namespace RuningApp
                             else {
                                 y_type = (Math.Abs(e.shakeType.MaxValues.miny));
                             };
-                            //this.MovingSoundsY.Volume = y_type;
                             this.MovingSoundsY.Play();
                             break;
                         case "Z":
@@ -149,31 +157,171 @@ namespace RuningApp
                     _distance = _distance + Double.Parse(this.StepLength.Text);
                     this.DistanceText.Text = _distance.ToString("F");
 
-
-                    _data.Add(new CoordDataItem() { time = DateTime.Now, timestr = DateTime.Now.Minute + ":" + DateTime.Now.Second, X = x_type, Y = y_type, Z = z_type });
+                    //ARDisplay.
+                    CoordDataItem sitem = new CoordDataItem()
+                    {
+                        time = DateTime.Now,
+                        timestr = DateTime.Now.Minute + ":" + DateTime.Now.Second,
+                        X = x_type,
+                        Y = y_type,
+                        Z = z_type,
+                        GeoLocation = ARDisplay.Location
+                    };
+                    _data.Add(sitem);
+                    string out_label = DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + "  " + e.shakeType.ShakeTypeStr.ToString() + "  " + x_type.ToString() + "  " + y_type.ToString() + "  " + z_type.ToString();
+                    if ((_stepsCount % 10) == 0)
+                    {
+                        this.AddLabel(sitem); 
+                    };
                     this.ShakeLog.Items.Add(DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + "  " + e.shakeType.ShakeTypeStr.ToString() + "  " + x_type.ToString() + "  " + y_type.ToString() + "  " + z_type.ToString());
+
+                    ARDisplay.ARItems = _data;
                 });            
         }
 
-        public ObservableCollection<CoordDataItem> Data { get { return _data; } }
+        private Random rand = new Random();
+
+        private void AddLabel(CoordDataItem in_item)
+        {
+            // We'll use the specified text for the content and we'll let 
+            // the system automatically project the item into world space
+            // for us based on the Geo location.
+
+            ARDisplay.ARItems.Add(in_item);
+        }
+
+        private void AddNearbyLabels()
+        {
+            // Start with the current location
+            GeoCoordinate current = ARDisplay.Location;
+
+            // We'll add three Labels
+            for (int i = 0; i < 6; i++)
+            {
+                // Create a new location based on the users location plus
+                // a random offset.
+                GeoCoordinate offset = new GeoCoordinate(
+                    current.Latitude + ((double)rand.Next(-160, 160)) / 100000,
+                    current.Longitude + ((double)rand.Next(-160, 160)) / 100000);
+
+                CoordDataItem sitem = new CoordDataItem()
+                {
+                    time = DateTime.Now,
+                    timestr = DateTime.Now.Minute + ":" + DateTime.Now.Second,
+                    X = 0,
+                    Y = 0,
+                    Z = 0,
+                    GeoLocation = offset,
+                    step = i
+                };
+
+                AddLabel(sitem);
+            }
+        }
+
+        /// <summary>
+        /// Switches between rottaing the Heading Indicator or rotating the Map to the current heading.
+        /// </summary>
+        private void SwitchHeadingMode()
+        {
+            if (HeadingIndicator.RotationSource == RotationSource.AttitudeHeading)
+            {
+                HeadingIndicator.RotationSource = RotationSource.North;
+                OverheadMap.RotationSource = RotationSource.AttitudeHeading;
+            }
+            else
+            {
+                OverheadMap.RotationSource = RotationSource.North;
+                HeadingIndicator.RotationSource = RotationSource.AttitudeHeading;
+            }
+        }
+
+        public ObservableCollection<ARItem> Data { get { return _data; } }
         public string Distance { get { return _distance.ToString("F"); } }
         private double _distance = 0;
-        private ObservableCollection<CoordDataItem> _data = new ObservableCollection<CoordDataItem>()
+        private ObservableCollection<ARItem> _data = new ObservableCollection<ARItem>()
         { 
         };
 
-        public class CoordDataItem
+        private void AddLocationsMenu_Click(object sender, EventArgs e)
+        {
+            AddNearbyLabels();
+        }
+
+        private void ClearLocationsMenu_Click(object sender, EventArgs e)
+        {
+            ARDisplay.ARItems.Clear();
+        }
+
+        protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            // Stop AR services
+            ARDisplay.StopServices();
+            //ARDisplayHeading.StopServices();
+            base.OnNavigatedFrom(e);
+        }
+
+        protected override void OnNavigatedTo(System.Windows.Navigation.NavigationEventArgs e)
+        {
+            // Start AR services
+            ARDisplay.StartServices();
+            //ARDisplayHeading.StartServices();
+
+            base.OnNavigatedTo(e);
+        }
+
+        private void HeadingButton_Click(object sender, System.EventArgs e)
+        {
+            UIHelper.ToggleVisibility(HeadingIndicator);
+        }
+
+        private void MapButton_Click(object sender, System.EventArgs e)
+        {
+            UIHelper.ToggleVisibility(OverheadMap);
+        }
+
+        private void RotateButton_Click(object sender, System.EventArgs e)
+        {
+            SwitchHeadingMode();
+        }
+
+        private void ThreeDButton_Click(object sender, System.EventArgs e)
+        {
+            UIHelper.ToggleVisibility(WorldView);
+        }
+
+        public class CoordDataItem: ARItem
         {
             public DateTime time { get; set; }
             public string timestr { get; set; }
             public double X { get; set; }
             public double Y { get; set; }
             public double Z { get; set; }
+            public int step { get; set; }
+            //GeoCoordinate current = ARDisplay.Location;
+            //public GeoCoordinate GeoLocation { get; set; }
         }
 
         private void StopGestures_Click(object sender, RoutedEventArgs e)
         {
             ShakeGesturesHelper.Instance.Active = false;
+        }
+
+        private void AddCurrentLocationsMenu_Click(object sender, EventArgs e)
+        {
+            GeoCoordinate current = ARDisplay.Location;
+            CoordDataItem sitem = new CoordDataItem()
+            {
+                time = DateTime.Now,
+                timestr = DateTime.Now.Minute + ":" + DateTime.Now.Second,
+                X = 0,
+                Y = 0,
+                Z = 0,
+                GeoLocation = current,
+                step = 0
+            };
+
+            AddLabel(sitem);
         }
 
     }

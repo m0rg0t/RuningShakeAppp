@@ -1,0 +1,18 @@
+﻿<xapCache source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\Bin\Debug\SimpleAR.xap" wasSigned="False" certificateThumbprint="" TimeStampUrl="" lastWriteTime="20.05.2012 13:07:34">
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\Bin\Debug\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="20.05.2012 13:06:56" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\Background.png" archivePath="Background.png" lastWriteTime="12.08.2011 15:24:26" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\ApplicationIcon.png" archivePath="ApplicationIcon.png" lastWriteTime="12.08.2011 15:24:26" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\obj\Debug\SimpleAR.dll" archivePath="SimpleAR.dll" lastWriteTime="20.05.2012 13:07:33" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\GART.dll" archivePath="GART.dll" lastWriteTime="20.05.2012 13:06:45" />
+  <file source="C:\Program Files\Microsoft SDKs\Windows Phone\v7.1\Libraries\Silverlight\Microsoft.Phone.Controls.Maps.dll" archivePath="Microsoft.Phone.Controls.Maps.dll" lastWriteTime="29.08.2011 22:49:08" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\GART.dll" archivePath="GART.dll" lastWriteTime="20.05.2012 13:06:45" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\SplashScreenImage.jpg" archivePath="SplashScreenImage.jpg" lastWriteTime="12.08.2011 15:24:26" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\icons\appbar.heading.png" archivePath="icons\appbar.heading.png" lastWriteTime="17.08.2011 9:45:56" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\icons\appbar.map.png" archivePath="icons\appbar.map.png" lastWriteTime="17.08.2011 10:50:32" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\icons\appbar.video.png" archivePath="icons\appbar.video.png" lastWriteTime="19.07.2011 23:19:06" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\icons\appbar.rotate.png" archivePath="icons\appbar.rotate.png" lastWriteTime="17.08.2011 11:05:08" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\icons\appbar.3D.png" archivePath="icons\appbar.3D.png" lastWriteTime="17.08.2011 11:10:00" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\Bin\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="20.05.2012 13:06:56" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\Bin\Debug\icons\appbar.rotate.png" archivePath="icons\appbar.rotate.png" lastWriteTime="17.08.2011 11:05:08" />
+  <file source="C:\projects\RuningApp\RuningApp\WindowsPhone\SimpleAR\Bin\Debug\icons\appbar.3D.png" archivePath="icons\appbar.3D.png" lastWriteTime="17.08.2011 11:10:00" />
+</xapCache>
