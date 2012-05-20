@@ -30,3 +30,6 @@ C:\projects\RuningApp\RuningApp\obj\Debug\RuningApp.dll
 C:\projects\RuningApp\RuningApp\obj\Debug\RuningApp.pdb
 C:\projects\RuningApp\RuningApp\obj\Debug\XapCacheFile.xml
 C:\projects\RuningApp\RuningApp\Bin\Debug\AmCharts.Windows.QuickCharts.WP.dll
+C:\projects\RuningApp\RuningApp\Bin\Debug\GART.dll
+C:\projects\RuningApp\RuningApp\Bin\Debug\Microsoft.Phone.Controls.Maps.dll
+C:\projects\RuningApp\RuningApp\Bin\Debug\Microsoft.Phone.Controls.Maps.xml

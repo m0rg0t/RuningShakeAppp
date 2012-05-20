@@ -14,6 +14,7 @@ using Microsoft.Phone.Controls;
 using ShakeGestures;
 using AmCharts;
 using System.Collections.ObjectModel;
+using GART;
 
 namespace RuningApp
 {
@@ -53,8 +54,8 @@ namespace RuningApp
             ShakeGesturesHelper.Instance.ShakeGesture += new EventHandler<ShakeGestureEventArgs>(Instance_ShakeGesture);
 
             // optional, set parameters
-            ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 1;
-            ShakeGesturesHelper.Instance.WeakMagnitudeWithoutGravitationThreshold = 0.05;
+            ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 2;
+            ShakeGesturesHelper.Instance.WeakMagnitudeWithoutGravitationThreshold = 0.1;
 
             // start shake detection
             ShakeGesturesHelper.Instance.Active = true;
@@ -65,8 +66,9 @@ namespace RuningApp
             Dispatcher.BeginInvoke(
                 () =>
                 {
+                    //this.MovingSounds.Play();
+                    //clear uncorrect values
                     double x_type = 0, y_type = 0, z_type = 0;
-
                     if (e.shakeType.MaxValues.minx == 10000)
                     {
                         e.shakeType.MaxValues.minx = 0;
@@ -79,8 +81,6 @@ namespace RuningApp
                     {
                         e.shakeType.MaxValues.minz = 0;
                     };
-
-
                     if (e.shakeType.MaxValues.maxx == -10000)
                     {
                         e.shakeType.MaxValues.maxx = 0;
@@ -94,7 +94,7 @@ namespace RuningApp
                         e.shakeType.MaxValues.maxz = 0;
                     };
 
-
+                    //set max value
                     switch (e.shakeType.ShakeTypeStr.ToString())
                     {
                         case "X":
@@ -104,6 +104,10 @@ namespace RuningApp
                             else {
                                 x_type = (Math.Abs(e.shakeType.MaxValues.minx));
                             };
+                            //this.MovingSoundsX.Source = new Uri("/RuningApp;component/sounds/knock1.wav");
+                            //this.MovingSoundsX.Volume = x_type;
+                            this.MovingSoundsX.Play();
+                            //"/RuningApp;component/sounds/knock1.wav"
                             break;
                         case "Y":
                             if ((Math.Abs(e.shakeType.MaxValues.maxy))>(Math.Abs(e.shakeType.MaxValues.miny))) {
@@ -112,6 +116,8 @@ namespace RuningApp
                             else {
                                 y_type = (Math.Abs(e.shakeType.MaxValues.miny));
                             };
+                            //this.MovingSoundsY.Volume = y_type;
+                            this.MovingSoundsY.Play();
                             break;
                         case "Z":
                             if ((Math.Abs(e.shakeType.MaxValues.maxz))>(Math.Abs(e.shakeType.MaxValues.minz))) {
@@ -124,6 +130,9 @@ namespace RuningApp
                         default:                            
                             break;
                     }
+                    /////////////////////////////
+                    //clear values
+                    /////////////////////////////
                     if ((x_type == 10000) && (x_type==-10000)) {
                         x_type = 0;
                     };
@@ -136,28 +145,27 @@ namespace RuningApp
                         y_type = 0;
                     };
 
+                    //update distance
                     _distance = _distance + Double.Parse(this.StepLength.Text);
                     this.DistanceText.Text = _distance.ToString("F");
 
-                    _data.Add(new CoordDataItem() { time = DateTime.Now.Minute + ":" + DateTime.Now.Second, X = x_type, Y = y_type, Z = z_type });
+
+                    _data.Add(new CoordDataItem() { time = DateTime.Now, timestr = DateTime.Now.Minute + ":" + DateTime.Now.Second, X = x_type, Y = y_type, Z = z_type });
                     this.ShakeLog.Items.Add(DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + "  " + e.shakeType.ShakeTypeStr.ToString() + "  " + x_type.ToString() + "  " + y_type.ToString() + "  " + z_type.ToString());
-                });
-            //System.Diagnostics.Debug.WriteLine(DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + DateTime.Now.Millisecond + "  " + e.ShakeType);
+                });            
         }
 
         public ObservableCollection<CoordDataItem> Data { get { return _data; } }
-
         public string Distance { get { return _distance.ToString("F"); } }
-
         private double _distance = 0;
-
         private ObservableCollection<CoordDataItem> _data = new ObservableCollection<CoordDataItem>()
         { 
         };
 
         public class CoordDataItem
         {
-            public string time { get; set; }
+            public DateTime time { get; set; }
+            public string timestr { get; set; }
             public double X { get; set; }
             public double Y { get; set; }
             public double Z { get; set; }

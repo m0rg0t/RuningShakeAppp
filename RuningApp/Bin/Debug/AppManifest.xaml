@@ -2,7 +2,9 @@
   <Deployment.Parts>
     <AssemblyPart x:Name="RuningApp" Source="RuningApp.dll" />
     <AssemblyPart x:Name="AmCharts.Windows.QuickCharts.WP" Source="AmCharts.Windows.QuickCharts.WP.dll" />
+    <AssemblyPart x:Name="GART" Source="GART.dll" />
     <AssemblyPart x:Name="Microsoft.Phone.Controls" Source="Microsoft.Phone.Controls.dll" />
     <AssemblyPart x:Name="ShakeGestures" Source="ShakeGestures.dll" />
+    <AssemblyPart x:Name="Microsoft.Phone.Controls.Maps" Source="Microsoft.Phone.Controls.Maps.dll" />
   </Deployment.Parts>
 </Deployment>
