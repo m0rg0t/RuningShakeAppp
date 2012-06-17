@@ -59,8 +59,8 @@
             <controls:PivotItem Header="Log record">
                 <!--Двухстрочный список с разбивкой текста на строки-->
                 <StackPanel>
-                    <MediaElement Name="MovingSoundsX" Source="/RuningApp;component/sounds/knock1.wav" Volume="5" />
-                    <MediaElement Name="MovingSoundsY" Source="/RuningApp;component/sounds/revknock2.wav" Volume="1" />
+                    <MediaElement Name="MovingSoundsX" Source="/RuningApp;component/sounds/knock1.wav" />
+                    <MediaElement Name="MovingSoundsY" Source="/RuningApp;component/sounds/revknock2.wav" />
                     
                     <Button x:Name="RecordGestures" Click="RecordGestures_Click" Content="Start record"/>
                     <Button x:Name="StopGestures" Click="StopGestures_Click" Content="Stop record"/>
@@ -72,6 +72,11 @@
                     <StackPanel>
                         <TextBlock Text="Примерное пройденное расстояние"/>
                         <TextBlock Text="0" Name="DistanceText" FontSize="60" />
+                    </StackPanel>
+
+                    <StackPanel>
+                        <TextBlock Text="Примерное количество шагов"/>
+                        <TextBlock Text="0" Name="StepsText" FontSize="60" />
                     </StackPanel>
 
                     <!--<ARControls:ARDisplay x:Name="ARDisplayHeading" d:LayoutOverrides="Width">
@@ -122,7 +127,7 @@
                     <Grid Height="500">
                         <ARControls:ARDisplay Height="500" x:Name="ARDisplay" d:LayoutOverrides="Width">
                         <ARControls:VideoPreview x:Name="VideoPreview" />
-                        <ARControls:OverheadMap Height="500" x:Name="OverheadMap" CredentialsProvider="{StaticResource BingCredentials}" />
+                        <ARControls:OverheadMap Height="500" x:Name="OverheadMap" Visibility="Collapsed" CredentialsProvider="{StaticResource BingCredentials}" />
                         <ARControls:WorldView x:Name="WorldView" ItemTemplate="{StaticResource PointTemplate}" />
                         <ARControls:HeadingIndicator x:Name="HeadingIndicator" HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </ARControls:ARDisplay>
@@ -131,12 +136,12 @@
             </controls:PivotItem>
             </controls:Pivot>
     </Grid>
-
+<!--<shell:ApplicationBarIconButton x:Name="MapButton" IconUri="/icons/appbar.map.png" IsEnabled="True" Text="map" Click="MapButton_Click"/>-->
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar>
             <shell:ApplicationBarIconButton x:Name="RotateButton" IconUri="/icons/appbar.rotate.png" IsEnabled="True" Text="rotate" Click="RotateButton_Click"/>
             <shell:ApplicationBarIconButton x:Name="HeadingButton" IconUri="/icons/appbar.heading.png" IsEnabled="True" Text="Heading" Click="HeadingButton_Click"/>
-            <shell:ApplicationBarIconButton x:Name="MapButton" IconUri="/icons/appbar.map.png" IsEnabled="True" Text="map" Click="MapButton_Click"/>
+            
             <shell:ApplicationBarIconButton x:Name="ThreeDButton" IconUri="/icons/appbar.3D.png" IsEnabled="True" Text="3D" Click="ThreeDButton_Click"/>
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem x:Name="AddCurrentLocationsMenu" Text="add current locations" Click="AddCurrentLocationsMenu_Click" />

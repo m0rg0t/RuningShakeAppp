@@ -61,7 +61,7 @@ namespace RuningApp
 
             // optional, set parameters
             ShakeGesturesHelper.Instance.MinimumRequiredMovesForShake = 1;
-            ShakeGesturesHelper.Instance.WeakMagnitudeWithoutGravitationThreshold = 0.08;
+            ShakeGesturesHelper.Instance.WeakMagnitudeWithoutGravitationThreshold = 0.04;
 
             // start shake detection
             ShakeGesturesHelper.Instance.Active = true;
@@ -72,7 +72,7 @@ namespace RuningApp
 
         private void Instance_ShakeGesture(object sender, ShakeGestureEventArgs e)
         {
-            _stepsCount++;
+            
             Dispatcher.BeginInvoke(
                 () =>
                 {
@@ -152,12 +152,8 @@ namespace RuningApp
                     {
                         y_type = 0;
                     };
-
                     //update distance
-                    _distance = _distance + Double.Parse(this.StepLength.Text);
-                    this.DistanceText.Text = _distance.ToString("F");
 
-                    //ARDisplay.
                     CoordDataItem sitem = new CoordDataItem()
                     {
                         time = DateTime.Now,
@@ -165,17 +161,49 @@ namespace RuningApp
                         X = x_type,
                         Y = y_type,
                         Z = z_type,
-                        GeoLocation = ARDisplay.Location
+                        GeoLocation = ARDisplay.Location,
+                        step = _stepsCount
                     };
-                    _data.Add(sitem);
+
+                    try {
+                        //((_data.Last() as CoordDataItem).time.Second == sitem.time.Second) && 
+
+                        if (((_data.Last() as CoordDataItem).time.Second == sitem.time.Second) 
+                            && ((_data.Last() as CoordDataItem).time.Minute == sitem.time.Minute))
+                        {
+                            //nothing
+                    }
+                    else {
+                        _stepsCount++;
+                        _distance = _distance + Double.Parse(this.StepLength.Text);
+                        this.DistanceText.Text = _distance.ToString("F");
+                        this.StepsText.Text = _stepsCount.ToString();
+
+                        if ((_stepsCount % 10) == 0)
+                        {
+                            this.AddLabel(sitem);
+                            //_data.Add(sitem);
+                        };
+
+                        _data.Add(sitem);
+                    };
+                    }
+                    catch {
+                        _stepsCount++;
+                        _distance = _distance + Double.Parse(this.StepLength.Text);
+                        this.DistanceText.Text = _distance.ToString("F");
+
+                        this.StepsText.Text = _stepsCount.ToString();
+
+                        _data.Add(sitem);
+                    };                    
+
+                    
                     string out_label = DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + "  " + e.shakeType.ShakeTypeStr.ToString() + "  " + x_type.ToString() + "  " + y_type.ToString() + "  " + z_type.ToString();
-                    if ((_stepsCount % 10) == 0)
-                    {
-                        this.AddLabel(sitem); 
-                    };
+                    
                     this.ShakeLog.Items.Add(DateTime.Now.Minute + ":" + DateTime.Now.Second + ":" + "  " + e.shakeType.ShakeTypeStr.ToString() + "  " + x_type.ToString() + "  " + y_type.ToString() + "  " + z_type.ToString());
 
-                    ARDisplay.ARItems = _data;
+                    //ARDisplay.ARItems = _data;
                 });            
         }
 
