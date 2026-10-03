@@ -57,6 +57,8 @@ namespace RuningApp
 
         private void RecordGestures_Click(object sender, RoutedEventArgs e)
         {
+            // Recording can be requested repeatedly from the same page.
+            ShakeGesturesHelper.Instance.ShakeGesture -= new EventHandler<ShakeGestureEventArgs>(Instance_ShakeGesture);
             ShakeGesturesHelper.Instance.ShakeGesture += new EventHandler<ShakeGestureEventArgs>(Instance_ShakeGesture);
 
             // optional, set parameters
@@ -283,6 +285,8 @@ namespace RuningApp
 
         protected override void OnNavigatedFrom(System.Windows.Navigation.NavigationEventArgs e)
         {
+            StopGestures_Click(null, null);
+
             // Stop AR services
             ARDisplay.StopServices();
             //ARDisplayHeading.StopServices();
@@ -333,6 +337,7 @@ namespace RuningApp
         private void StopGestures_Click(object sender, RoutedEventArgs e)
         {
             ShakeGesturesHelper.Instance.Active = false;
+            ShakeGesturesHelper.Instance.ShakeGesture -= new EventHandler<ShakeGestureEventArgs>(Instance_ShakeGesture);
         }
 
         private void AddCurrentLocationsMenu_Click(object sender, EventArgs e)
